@@ -29,6 +29,6 @@ jobs:
       - run: npm test
       - name: deploy
         run: |
-          npx ncc build index.js
+          cp index.js ./dist/index.js
           zip -j deploy.zip ./dist/*
           aws lambda update-function-code --function-name=test-lambda-node-js --zip-file=fileb://deploy.zip
