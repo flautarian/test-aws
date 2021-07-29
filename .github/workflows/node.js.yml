@@ -25,9 +25,9 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14
-      - run: npm test
+      - run: npm ci
       - name: deploy
         run: |
           cp index.js ./dist/index.js
           zip -j deploy.zip ./dist/*
-          aws lambda update-function-code --function-name=test-lambda-node-js --zip-file=fileb://deploy.zip
+          aws lambda update-function-code --function-name=test-lambda-node-js --zip-file=fileb://deploy.zip --debug
