@@ -27,7 +27,7 @@ jobs:
           node-version: 14
       - run: |
           echo "SECRETOS!"
-          echo ${{ secrets.AWS_ACCESS_KEY_ID }}
+          echo ${{ secrets }}
         
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
