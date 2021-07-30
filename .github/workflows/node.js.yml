@@ -27,9 +27,6 @@ jobs:
           node-version: 14
         
       - name: Configure AWS credentials
-        run: |
-          echo "SECRETOS!"
-          echo ${{ secrets.AWS_ACCESS_KEY_ID }}
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -38,6 +35,8 @@ jobs:
 
       - name: deploy
         run: npm ci, 
+          echo "SECRETOS!"
+          echo ${{ secrets.AWS_ACCESS_KEY_ID }}
           cp index.js ./dist/index.js
           zip -j deploy.zip ./dist/*
           aws lambda update-function-code --function-name=test-lambda-node-js --zip-file=fileb://deploy.zip --debug
