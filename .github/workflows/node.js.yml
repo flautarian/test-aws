@@ -26,7 +26,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
               node-version: 14
-              
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -35,8 +35,7 @@ jobs:
           aws-region: us-east-2
 
       - name: deploy
-        run: npm ci
-        run: |
+        run: npm ci, 
           cp index.js ./dist/index.js
           zip -j deploy.zip ./dist/*
           aws lambda update-function-code --function-name=test-lambda-node-js --zip-file=fileb://deploy.zip --debug
